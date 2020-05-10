@@ -1,0 +1,11 @@
+---
+
+- name: Optional Utils
+  hosts: all
+  remote_user: ansible
+  become: yes
+  roles:
+  - role: optional_utils
+    tags: utils
+  - role: zsh
+    tags: zsh

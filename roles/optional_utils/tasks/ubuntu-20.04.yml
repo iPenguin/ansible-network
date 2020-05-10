@@ -1,0 +1,10 @@
+---
+
+- name: Install optional utils on CentOS 7
+  apt:
+    name: [
+      'vim',
+      'vim-airline',
+      'powerline-gitstatus',
+      'screen'
+    ]

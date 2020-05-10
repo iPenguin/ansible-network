@@ -1,0 +1,7 @@
+---
+
+- name: Install zsh CentOS 7
+  yum:
+    name: [
+      'zsh'
+    ]

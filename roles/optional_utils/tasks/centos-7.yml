@@ -1,0 +1,8 @@
+---
+
+- name: Install optional utils on CentOS 7
+  yum:
+    name: [
+      'vim',
+      'screen',
+    ]

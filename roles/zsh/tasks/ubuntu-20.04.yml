@@ -1,0 +1,18 @@
+---
+
+- name: Install zsh Ubunutu 20.40
+  apt:
+    name: [
+      'zsh',
+      'zsh-autosuggestions',
+      'zsh-syntax-highlighting'
+    ]
+
+- name: Download oh-my-zsh install script
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: "{{ ansible_user_dir }}/omzsh-install.sh"
+    mode: '0740'
+
+- name: Install oh-my-zsh
+  command: "sh {{ ansible_user_dir }}/omzsh-install.sh --unattended"
