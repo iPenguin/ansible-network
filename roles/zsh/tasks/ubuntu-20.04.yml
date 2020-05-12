@@ -14,5 +14,11 @@
     dest: "{{ ansible_user_dir }}/omzsh-install.sh"
     mode: '0740'
 
+- name: Is oh-my-zsh installed?
+  stat:
+    path: "{{ ansible_user_dir }}/.oh-my-zsh"
+  register: oh_my_insalled
+
 - name: Install oh-my-zsh
   command: "sh {{ ansible_user_dir }}/omzsh-install.sh --unattended"
+  when: not oh_my_insalled.stat.exists
