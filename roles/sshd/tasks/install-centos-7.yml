@@ -1,0 +1,19 @@
+---
+
+- name: install SSH server
+  yum:
+    name:
+      - openssh-server
+
+- name: open ssh port on the firewall
+  firewalld:
+    port: 22/tcp
+    permanent: yes
+    state: enabled
+
+- name: enable ssh server
+  service:
+    name: ssh
+    state: started
+    enabled: yes
+  become: yes
