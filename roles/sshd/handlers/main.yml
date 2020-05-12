@@ -1,7 +1,0 @@
----
-
-- name: Enable SSH Server
-  service:
-    name: sshd
-    enabled: yes
-    state: started
