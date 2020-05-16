@@ -1,18 +1,20 @@
 ---
+
 # handlers file for ansible-samba
 - name: restart nmbd
   service:
     name: "nmbd"
-    state: restarted
-  when: not samba_server_role == "active directory domain controller"
-
-- name: restart samba-ad-dc
-  service:
-    name: "samba-ad-dc"
-    state: restarted
-  when: samba_server_role == "active directory domain controller"
+    state: "{{ 'restarted' if not samba_server_role == 'active directory domain controller' else 'stopped' }}"
+    enabled: "{{ 'no' if not samba_server_role == 'active directory domain controller' else 'yes' }}"
 
 - name: restart smbd
   service:
     name: "smbd"
-    state: restarted
+    state: "{{ 'restarted' if not samba_server_role == 'active directory domain controller' else 'stopped' }}"
+    enabled: "{{ 'no' if not samba_server_role == 'active directory domain controller' else 'yes' }}"
+
+- name: restart samba-ad-dc
+  service:
+    name: "samba-ad-dc"
+    state: "{{ 'restarted' if samba_server_role == 'active directory domain controller' else 'stopped' }}"
+    enabled: "{{ 'yes' if samba_server_role == 'active directory domain controller' else 'no' }}"

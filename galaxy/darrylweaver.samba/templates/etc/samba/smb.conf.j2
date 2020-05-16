@@ -1,4 +1,7 @@
 # Global parameters
+#
+# {{ ansible_managed }}
+#
 {% if samba_create_domain_controller is defined and samba_create_domain_controller and samba_server_role == "active directory domain controller" %}
 [global]
         workgroup = {{ samba_ad_info.netbios_domain_name|upper }}
