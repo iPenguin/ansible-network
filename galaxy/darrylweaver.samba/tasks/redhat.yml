@@ -1,0 +1,11 @@
+---
+- name: redhat | installing pre-reqs
+  yum:
+    name: [
+      "krb5-workstation",
+      "samba-winbind",
+      "samba-winbind-clients",
+      "authconfig",
+      "samba-client"
+    ]
+    state: present

@@ -1,0 +1,32 @@
+---
+
+- name: file server setup
+  hosts: file_server
+  remote_user: ansible
+  become: yes
+  vars:
+    samba_ad_info:
+      ad_dc_hostname: '{{ ansible_hostname }}'
+      ad_dns_domain_name: '{{ local.dns_domain }}'
+      adminpass: '{{ ad_admin_password }}'
+      dns_forwarder: "{{ local.external_resolvers_ipv4 }} {{ local.external_resolvers_ipv6 }}"
+      kerberos_realm: '{{ local.dns_domain }}'
+      netbios_domain_name: "{{ local.netbios_domain }}"
+    samba_interfaces: "{{ ansible_default_ipv4.address|default('') }} {{ ansible_default_ipv6.address|default('') }} lo"
+    samba_bind_interfaces_only: yes
+    samba_workgroup: "{{ local.netbios_domain }}"
+    samba_security: ADS
+    samba_server_role: 'member server'
+    samba_share_path: '/srv/shares'
+    samba_shares:
+      - name: 'files'
+        browsable: 'yes'
+        folder_perms: '0770'
+        group: 'users'
+        guest_ok: 'no'
+        valid_users: '@users'
+        writable: 'yes'
+
+  roles:
+    - role: darrylweaver.samba
+      tags: ad_member

@@ -1,0 +1,16 @@
+---
+- name: debian | installing pre-reqs
+  apt:
+    name: [
+      "acl",
+      "dnsutils",
+      "krb5-user",
+      "krb5-config",
+      "samba",
+      "samba-common",
+      "smbldap-tools",
+      "winbind",
+      "libpam-winbind",
+      "libnss-winbind"
+    ]
+    state: present

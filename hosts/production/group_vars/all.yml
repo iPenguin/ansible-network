@@ -1,0 +1,46 @@
+---
+
+local:
+  network: "192.168.1.0/24"
+  gateway: "192.168.1.1"
+  dns_domain: n.milco.info
+  netbios_domain: MILCO
+  ad_dcs:
+    - ipv4: 192.168.1.20
+      ipv6: 2601:200:4100:b689::ad1
+    - ipv4: 192.168.1.21
+      ipv6: 2601:200:4100:b689::ad2
+  external_resolvers_ipv4: 1.1.1.1 1.0.0.1
+  external_resolvers_ipv6: 2606:4700:4700::1111 2606:4700:4700::1001
+
+ad_admin_password: !vault |
+  $ANSIBLE_VAULT;1.1;AES256
+  30653133363433353835353264313330346634343861323937643836626533663739383065346637
+  3335616131666664653037663139393239643534656561390a393764316532623031316361643931
+  38373533373765306564326238383736613830313664636431326261626134626233363539646430
+  3662393466333065380a376135633932306539356163363935666530643130353166633730383437
+  3533
+
+
+
+users:
+  brian:
+    # blank password because we're only using keys or kerberos.
+    password:
+    # only add user to groups listed below
+    append: no
+    description: "Brian C. Milco"
+    email: "bcmilco@gmail.com"
+    group: users
+    # Empty by default, here we give it some groups
+    groups:
+#      - wheel
+#      - docker
+      - sudo
+#      - libvert
+    state: present
+    shell: /usr/bin/zsh
+    system: no
+    create_home: yes
+    home: /home/brian
+    key_file: "brian.pub"

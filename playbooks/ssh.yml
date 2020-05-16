@@ -1,0 +1,58 @@
+---
+  
+- name: server setup
+  hosts: all
+  remote_user: ansible
+  become: yes
+  vars:
+    sshd:
+      Compression: true
+      ListenAddress:
+        - "0.0.0.0"
+        - "::"
+      PermitRootLogin: no
+      PubkeyAuthentication: yes
+      AuthenticationMethods: publickey gssapi-keyex gssapi-with-mic
+      PasswordAuthentication: no
+      KerberosAuthentication: yes
+      KerberosOrLocalPasswd: yes
+      KerberosTicketCleanup: yes
+      GSSAPIAuthentication: yes
+      GSSAPICleanupCredentials: yes
+      GSSAPIKeyExchange: yes
+      UsePAM: yes
+      X11Forwarding: yes
+    ssh_client_configurations:
+      - dest: /etc/ssh/ssh_config
+        owner: root
+        group: root
+        hosts:
+          - pattern: ['*']
+            send_env: LANG LC_*
+            hash_known_hosts: true
+            gssapi_authentication: true
+            gssapi_delegate_credentials: true
+            gssapi_key_exchange: true
+
+  roles:
+    - role: oefenweb.ssh_client
+      tags:
+        - ssh
+        - client
+    - role: willshersystems.sshd
+      tags:
+        - ssh
+        - server
+
+  # tasks:
+  #   - name: Test if tasks work in roles
+  #     authorized_key:
+  #       user: "{{ item }}"
+  #       key: "files/{{ item }}.pub"
+  #       state: present
+  #     loop:
+  #       - "brian"
+  #     tags:
+  #       - ssh
+  #       - client
+  #       - keys

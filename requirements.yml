@@ -1,0 +1,7 @@
+#
+# Required roles for project
+# install with: ansible-galaxy install -r requirements.yml
+#
+- src: willshersystems.sshd
+- src: oefenweb.ssh_client
+- src: darrylweaver.samba
