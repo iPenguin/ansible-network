@@ -25,6 +25,7 @@ ad_admin_password: !vault |
 
 users:
   brian:
+    # blank password because we're only using keys or kerberos.
     password:
     # only add user to groups listed below
     append: no
