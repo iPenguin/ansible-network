@@ -3,14 +3,13 @@
 # {{ ansible_managed }}
 #
 {% if samba_create_domain_controller is defined and samba_create_domain_controller and samba_server_role == "active directory domain controller" %}
+# AD DC Server
 [global]
         workgroup = {{ samba_ad_info.netbios_domain_name|upper }}
         realm = {{ samba_ad_info.kerberos_realm|upper }}
         netbios name = {{ ansible_hostname|upper|truncate(15, True, '') }}
         server role = {{ samba_server_role }}
         dns forwarder = {{ samba_ad_info.dns_forwarder }}
-        #server services = rpc, nbt, wrepl, ldap, cldap, kdc, drepl, winbind, ntp_signd, kcc, dnsupdate, dns
-        #dcerpc endpoint servers = epmapper, wkssvc, rpcecho, samr, netlogon, lsarpc, spoolss, drsuapi, dssetup, unixinfo, browser, eventlog6, backupkey, dnsserver, winreg, srvsvc
 
         interfaces = {{ samba_interfaces }}
         bind interfaces only = {{ samba_bind_interfaces_only }}
@@ -23,6 +22,7 @@
         path = /var/lib/samba/sysvol
         read only = No
 {% elif (samba_create_domain_controller is defined and not samba_create_domain_controller) or samba_create_domain_controller is not defined and samba_server_role == "member server" %}
+# Member Server
 [global]
         workgroup = {{ samba_ad_info.netbios_domain_name|upper }}
         realm = {{ samba_ad_info.kerberos_realm|upper }}
@@ -55,8 +55,7 @@
         idmap config {{ samba_ad_info.netbios_domain_name|upper }} : range = 10000001-20000000
 
 {% elif (samba_create_domain_controller is defined and not samba_create_domain_controller) or samba_create_domain_controller is not defined and samba_server_role == "standalone" %}
-#======================= Global Settings =======================
-
+# Stand Alone Server
 [global]
 
    workgroup = {{ samba_workgroup|upper }}

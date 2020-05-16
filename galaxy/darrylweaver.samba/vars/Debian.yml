@@ -1,0 +1,5 @@
+---
+
+smb_service: "smbd"
+nmb_service: "nmbd"
+ad_dc_service: "samba-ad-dc"

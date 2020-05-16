@@ -1,0 +1,6 @@
+---
+  
+smb_service: "smb"
+nmb_service: "nmb"
+# This service does not exist on redhat distros.
+ad_dc_service: "samba-ad-dc"
