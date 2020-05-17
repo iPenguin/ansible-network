@@ -4,6 +4,7 @@
   pacman:
     name: systemd
     state: present
+  when: ansible_os_family == "Archlinux"
 
 - name: configure systemd-resolved
   template:
@@ -14,7 +15,7 @@
     mode: 0644
   register: systemd_resolved_configuration
 
-- name: restart systemd-resolved
+- name: restart systemd-resolved - reload configuration
   systemd:
     name: systemd-resolved
     state: restarted
@@ -26,10 +27,8 @@
     enabled: yes
     state: started
 
-- name: link /etc/resolv.conf to stub
+- name: link /etc/resolv.conf to defined config
   file:
-    src: /run/systemd/resolve/stub-resolv.conf
+    src: /run/systemd/resolve/resolv.conf
     dest: /etc/resolv.conf
     state: link
-
-...
