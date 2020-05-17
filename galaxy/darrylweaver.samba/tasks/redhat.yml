@@ -3,10 +3,12 @@
   yum:
     name: [
       "samba",
+      "pam_krb5",
       "krb5-workstation",
       "samba-winbind",
       "samba-winbind-clients",
       "authconfig",
       "samba-client"
+      "acl",
     ]
     state: present
