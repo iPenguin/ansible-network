@@ -10,7 +10,7 @@
       ad_dns_domain_name: '{{ local.dns_domain }}'
       adminpass: '{{ ad_admin_password }}'
       backend_dns: SAMBA_INTERNAL
-      dns_forwarder: "{{ local.external_resolvers_ipv4}} {{ local.external_resolvers_ipv6 }}"
+      dns_forwarder: "{{ local.external_resolvers_ipv4|join(' ') }} {{ local.external_resolvers_ipv6|join(' ') }}"
       kerberos_realm: '{{ local.dns_domain }}'
       netbios_domain_name: "{{ local.netbios_domain }}"
     samba_interfaces: "{{ ansible_default_ipv4.address|default('') }} {{ ansible_default_ipv6.address|default('') }} lo"
@@ -19,16 +19,9 @@
     samba_create_domain_controller: true
     samba_security: ADS
     samba_server_role: 'active directory domain controller'
-    samba_share_path: '/srv/shares'
-    samba_shares:
-      - name: 'secured'
-        browsable: 'yes'
-        folder_perms: '0770'
-        group: 'users'
-        guest_ok: 'no'
-        valid_users: '@users'
-        writable: 'yes'
 
+    samba_domain_users: []
+    samba_shares: []
   roles:
     - role: darrylweaver.samba
       tags: ad_dc
