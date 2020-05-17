@@ -5,3 +5,6 @@
 - src: willshersystems.sshd
 - src: oefenweb.ssh_client
 - src: darrylweaver.samba
+- src: ahuffman.resolv
+- src: idiv-biodiversity.systemd_resolved
+- src: geerlingguy.nfs
