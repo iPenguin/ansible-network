@@ -5,8 +5,6 @@
   remote_user: ansible
   become: yes
   vars:
-    sshd: global_sshd
-    ssh_client_configurations: global_ssh_client_configurations
 
   roles:
     - role: oefenweb.ssh_client

@@ -1,6 +1,6 @@
 
 [ad_dc]
-ad.t.milco.info ansible_host=192.168.122.73
+ad.t.milco.info ansible_host=192.168.122.74
 
 [file_server]
 files.t.milco.info ansible_host=192.168.122.179

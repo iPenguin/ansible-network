@@ -24,7 +24,7 @@ ad_admin_password: !vault |
   3662393466333065380a376135633932306539356163363935666530643130353166633730383437
   3533
 
-global_sshd:
+sshd:
   Compression: true
   ListenAddress:
     - "0.0.0.0"
@@ -41,8 +41,8 @@ global_sshd:
   GSSAPIKeyExchange: yes
   UsePAM: yes
   X11Forwarding: yes
-global_ssh_client_configurations:
-  - dest: /etc/ssh/ssh_config
+ssh_client_configurations:
+  - dest: "/etc/ssh/ssh_config"
     owner: root
     group: root
     hosts:
