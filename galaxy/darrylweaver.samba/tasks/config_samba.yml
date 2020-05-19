@@ -9,6 +9,7 @@
   notify:
     - restart nmbd
     - restart smbd
+    - restart winbind
     - restart samba-ad-dc
   with_items:
     - 'etc/krb5.conf'

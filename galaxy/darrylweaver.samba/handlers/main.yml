@@ -13,6 +13,12 @@
     state: "{{ 'restarted' if not samba_server_role == 'active directory domain controller' else 'stopped' }}"
     enabled: "{{ 'no' if not samba_server_role == 'active directory domain controller' else 'yes' }}"
 
+- name: restart winbind
+  service:
+    name: "{{ winbind_service }}"
+    state: "{{ 'restarted' if not samba_server_role == 'active directory domain controller' else 'stopped' }}"
+    enabled: "{{ 'no' if not samba_server_role == 'active directory domain controller' else 'yes' }}"
+
 - name: restart samba-ad-dc
   service:
     name: "{{ ad_dc_service }}"
