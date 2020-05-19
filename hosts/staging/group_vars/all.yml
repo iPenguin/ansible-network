@@ -3,9 +3,9 @@
 local:
   network: "192.168.1.0/24"
   gateway: "192.168.1.1"
-  dns_domain: n.milco.info
+  dns_domain: t.milco.info
   netbios_domain: MILCO
-  ad_dc_hostname: ad.n.milco.info
+  ad_dc_hostname: ad.t.milco.info
   ad_dcs:
     - ipv4: 192.168.122.73
     - ipv4: 192.168.122.73
@@ -65,9 +65,9 @@ users:
     group: users
     # Empty by default, here we give it some groups
     groups:
+      - sudo
 #      - wheel
 #      - docker
-      - sudo
 #      - libvert
     state: present
     shell: /usr/bin/zsh
