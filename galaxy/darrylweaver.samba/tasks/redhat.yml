@@ -8,7 +8,7 @@
       "samba-winbind",
       "samba-winbind-clients",
       "authconfig",
-      "samba-client"
-      "acl",
+      "samba-client",
+      "acl"
     ]
     state: present
