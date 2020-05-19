@@ -7,5 +7,12 @@
   roles:
   - role: optional_utils
     tags: utils
+
   - role: zsh
     tags: zsh
+
+  - role: playbooks/ssh.yml
+    tags:
+      - ssh
+      - client
+      - server

@@ -22,6 +22,19 @@
 
     samba_domain_users: []
     samba_shares: []
+
+    sshd: global_sshd
+    ssh_client_configurations: global_ssh_client_configurations
   roles:
+    - role: willshersystems.sshd
+      tags:
+        - ssh
+        - sshd
+        - server
+    - role: oefenweb.ssh_client
+      tags:
+        - ssh
+        - client
+
     - role: darrylweaver.samba
       tags: ad_dc
