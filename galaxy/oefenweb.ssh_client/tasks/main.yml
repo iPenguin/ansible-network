@@ -10,6 +10,7 @@
     - configuration
     - ssh-client
     - ssh-client-dependencies
+  when: ansible_os_family == "Debian"
 
 - name: install additional
   apt:
@@ -19,6 +20,7 @@
     - configuration
     - ssh-client
     - ssh-client-install
+  when: ansible_os_family == "Debian"
 
 - name: create configuration directories
   file:
