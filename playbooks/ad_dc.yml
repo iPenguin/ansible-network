@@ -13,7 +13,10 @@
       dns_forwarder: "{{ local.external_resolvers_ipv4|join(' ') }} {{ local.external_resolvers_ipv6|join(' ') }}"
       kerberos_realm: '{{ local.dns_domain }}'
       netbios_domain_name: "{{ local.netbios_domain }}"
-    samba_interfaces: "{{ ansible_default_ipv4.address|default('') }} {{ ansible_default_ipv6.address|default('') }} lo"
+    samba_interfaces:
+      - "{{ ansible_default_ipv4.address|default('') }}"
+      - "{{ ansible_default_ipv6.address|default('') }}"
+      - "lo"
     samba_bind_interfaces_only: yes
     samba_workgroup: "{{ local.netbios_domain }}"
     samba_create_domain_controller: true
