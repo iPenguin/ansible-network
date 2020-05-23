@@ -1,3 +1,5 @@
+[vm_host]
+platform.t.milco.info ansible_host=192.168.122.5
 
 [ad_dc]
 ad.t.milco.info ansible_host=192.168.122.74
