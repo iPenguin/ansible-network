@@ -7,7 +7,9 @@
       ad_dc_hostname: '{{ local.ad_dc_hostname }}'
       ad_dns_domain_name: '{{ local.dns_domain }}'
       adminpass: '{{ ad_admin_password }}'
-      dns_forwarder: "{{ local.external_resolvers_ipv4 }} {{ local.external_resolvers_ipv6 }}"
+      dns_forwarder:
+        - "{{ local.external_resolvers_ipv4 }}"
+        - "{{ local.external_resolvers_ipv6 }}"
       kerberos_realm: '{{ local.dns_domain }}'
       netbios_domain_name: "{{ local.netbios_domain }}"
     samba_interfaces:
@@ -22,14 +24,14 @@
 
     samba_domain_users: []
     samba_shares: []
-    
+
     #
     # systemd_resolved variables
     #
     systemd_resolved_servers:
       - "{{ local.ad_dcs.0.ipv4 }}"
       - "{{ local.ad_dcs.1.ipv4 }}"
-    systemd_resolved_fallback_servers: local.external_resolvers_ipv4
+    systemd_resolved_fallback_servers: "{{ local.external_resolvers_ipv4 }}"
     systemd_resolved_domains:
       - "{{ local.dns_domain }}"
     #
@@ -45,7 +47,7 @@
     nfs_rpcbind_state: stopped
     nfs_rpcbind_enabled: false
     nfs_exports:
-      - /srv/shares/
+      - /srv/shares/     gss/krb5i(rw,sync,no_subtree_check)
 
   roles:
     - role: idiv-biodiversity.systemd_resolved
@@ -60,6 +62,7 @@
 
     - role: darrylweaver.samba
       tags:
+        - samba
         - ad_member
         - server
 
