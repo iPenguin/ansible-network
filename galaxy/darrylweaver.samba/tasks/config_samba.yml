@@ -49,7 +49,7 @@
   register: samba_ad_joined_check
 
 - name: config_samba | joining Active Directory domain
-  shell: "samba-tool domain join {{ samba_ad_info['ad_dns_domain_name'] }} MEMBER --username='{{ samba_ad_info['netbios_domain_name']|upper }}\administrator' --password='{{ samba_ad_info['adminpass'] }}'"
+  shell: samba-tool domain join {{ samba_ad_info['ad_dns_domain_name'] }} MEMBER --username="{{ samba_ad_info['netbios_domain_name']|upper }}\\Administrator" --password="{{ samba_ad_info['adminpass'] }}"
   register: samba_ad_joined
   when: >
         not samba_ad_joined_check['stat']['exists'] and
