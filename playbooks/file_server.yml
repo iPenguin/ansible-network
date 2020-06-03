@@ -43,11 +43,11 @@
     resolv_domain: "{{ local.dns_domain }}"
     resolv_search:
       - "{{ local.dns_domain }}"
-
-    nfs_rpcbind_state: stopped
-    nfs_rpcbind_enabled: false
-    nfs_exports:
-      - /srv/shares/     gss/krb5i(rw,sync,no_subtree_check)
+    #
+    # nfs_rpcbind_state: stopped
+    # nfs_rpcbind_enabled: false
+    # nfs_exports:
+    #   - /srv/shares/     gss/krb5i(rw,sync,no_subtree_check)
 
   roles:
     - role: idiv-biodiversity.systemd_resolved
@@ -65,9 +65,9 @@
         - samba
         - ad_member
         - server
-
-    - role: geerlingguy.nfs
-      tags:
-        - nfs
-        - server
-        - files
+    #
+    # - role: geerlingguy.nfs
+    #   tags:
+    #     - nfs
+    #     - server
+    #     - files
