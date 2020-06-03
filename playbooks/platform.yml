@@ -1,0 +1,17 @@
+---
+
+- name: VM/docker platform setup
+  hosts: vm_host
+  roles:
+    - role: oefenweb.ssh_client
+      tags:
+        - ssh
+        - client
+    - role: willshersystems.sshd
+      tags:
+        - ssh
+        - server
+    - role: docker
+      tags:
+        - docker
+        - server
