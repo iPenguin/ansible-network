@@ -1,0 +1,20 @@
+---
+
+- name: nfs file server
+  hosts: nfs_server
+  vars:
+
+    docker_root: "/docker"
+
+    nfs_rpcbind_state: stopped
+    nfs_rpcbind_enabled: false
+    nfs_exports:
+      - /srv/shares/     gss/krb5i(rw,sync,no_subtree_check)
+
+  roles:
+    - role: docker.nfs
+      tags:
+        - docker
+        - nfs
+        - server
+        - files

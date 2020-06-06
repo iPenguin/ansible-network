@@ -1,6 +1,6 @@
 ---
 
-- name: VM/docker platform setup
+- name: Docker host setup
   hosts: vm_host
   roles:
     - role: oefenweb.ssh_client

@@ -1,0 +1,11 @@
+---
+
+- name: Build container
+  make:
+    chdir: "{{ docker_root }}/{{ docker_name }}/container"
+    target: build
+  notify:
+    - Run container
+
+- name: Run container
+  command: "{{ docker_root }}/{{ docker_name }}/run.sh"
