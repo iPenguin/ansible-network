@@ -18,9 +18,9 @@ docker run -d --restart always \
     {{ option }} \
   {% endfor %}
   {% for volume in docker_volumes %}
-	    -v {{ volume }} \
+    -v {{ volume.host_path }}:{{ volume.container_path }} \
 	{% endfor %}
   {% for port in docker_ports %}
-      -p {{ docker_ip }}:{{ port }} \
+    -p {{ docker_ip }}:{{ port }} \
   {% endfor %}
 	{{ docker_name }}

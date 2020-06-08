@@ -6,5 +6,7 @@ docker_options:
   - "--privileged"
 
 docker_volumes:
-  - "{{ docker_root }}/{{ docker_name }}/config/exports:/etc/exports"
-  - "{{ docker_root }}/{{ docker_name }}/shares:/srv/shares"
+  - host_path: "{{ docker_root }}/{{ docker_name }}/config/exports"
+    container_path: "/etc/exports"
+  - host_path: "{{ docker_root }}/{{ docker_name }}/shares"
+    container_path: "/srv/shares"
