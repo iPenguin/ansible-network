@@ -8,4 +8,7 @@ ad2.n.milco.info ansible_host=192.168.1.11
 [file_server]
 files.n.milco.info ansible_host=192.168.1.15
 
+[nfs_server]
+platform.n.milco.info ansible_host=192.168.1.5
+
 [web_server]

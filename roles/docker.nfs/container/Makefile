@@ -1,6 +1,6 @@
 NAME := nfs
 TAG := latest
-IMAGE_NAME := ipenguin/$(NAME)
+IMAGE_NAME := $(NAME)
 
 .PHONY: help build clean
 
@@ -13,3 +13,4 @@ build: ## Builds docker image latest
 clean: ## Remove built images
 	docker rmi $(IMAGE_NAME):latest || true
 	docker rmi $(IMAGE_NAME):$(TAG) || true
+ 

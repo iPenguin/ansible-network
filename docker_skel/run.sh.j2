@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# {{ ansible_managed }}
+#
+
+CONTAINER=`docker ps -af "name={{ docker_name }}-srv" | awk 'NR>1 { print $1 }'`
+
+# If there this a container running stop and remove it first.
+if [ ! -z $CONTAINER ]
+then
+  docker stop $CONTAINER
+  docker rm $CONTAINER
+fi
+
+docker run -d --restart always \
+	--name {{ docker_name }}-srv \
+	{% for option in docker_options %}
+    {{ option }} \
+  {% endfor %}
+  {% for volume in docker_volumes %}
+	    -v {{ volume }} \
+	{% endfor %}
+  {% for port in docker_ports %}
+      -p {{ docker_ip }}:{{ port }} \
+  {% endfor %}
+	{{ docker_name }}

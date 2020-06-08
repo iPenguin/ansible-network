@@ -1,0 +1,10 @@
+---
+
+docker_ip: 192.168.1.55
+
+docker_options:
+  - "--privileged"
+
+docker_volumes:
+  - "{{ docker_root }}/{{ docker_name }}/config/exports:/etc/exports"
+  - "{{ docker_root }}/{{ docker_name }}/shares:/srv/shares"

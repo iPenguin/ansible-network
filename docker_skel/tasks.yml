@@ -15,20 +15,22 @@
     - "{{ docker_root }}/{{ docker_name }}/config"
     - "{{ docker_root }}/{{ docker_name }}/data"
 
-- name: Copy in container
+- name: Deploy container
   copy:
     src: "{{ item }}"
-    dest: "{{ docker_root }}/{{ docker_name }}/container"
+    dest: "{{ docker_root }}/{{ docker_name }}/container/"
     owner: "{{ ansible_user }}"
     group: "users"
     mode: 0640
   with_fileglob:
     - "container/*"
+  notify: Build container
 
 - name: Copy in run script
   template:
-    src: "{{ item }}"
-    dest: "{{ docker_root }}/{{ docker_name }}/"
+    src: "run.sh.j2"
+    dest: "{{ docker_root }}/{{ docker_name }}/run.sh"
     owner: "{{ ansible_user }}"
     group: "users"
     mode: 0750
+  notify: Run container
