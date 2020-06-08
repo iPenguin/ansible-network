@@ -8,5 +8,7 @@ docker_options:
 docker_volumes:
   - host_path: "{{ docker_root }}/{{ docker_name }}/config/exports"
     container_path: "/etc/exports"
+    type: "file"
   - host_path: "/srv/shares"
     container_path: "/srv/shares"
+    type: "directory"

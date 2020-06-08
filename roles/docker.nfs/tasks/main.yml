@@ -18,4 +18,5 @@
     owner: "{{ ansible_user }}"
     group: "users"
     mode: 0750
+    state: "{{ item.type }}"
   loop: "{{ docker_volumes }}"
