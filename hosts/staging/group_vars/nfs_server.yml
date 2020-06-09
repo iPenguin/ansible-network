@@ -5,6 +5,11 @@ docker_ip: 192.168.1.55
 docker_options:
   - "--privileged"
 
+docker_ports:
+  - 2049:2049
+  - 111:111
+  - 20048:20048
+
 docker_volumes:
   - host_path: "{{ docker_root }}/{{ docker_name }}/config/exports"
     container_path: "/etc/exports"
@@ -12,3 +17,13 @@ docker_volumes:
   - host_path: "{{ docker_root }}/{{ docker_name }}/shares"
     container_path: "/srv/shares"
     type: "directory"
+
+nfs_exports:
+  - share: "/srv/shares"
+    hosts:
+      - name: "*"
+        options:
+          - "rw"
+          - "sync"
+          - "no_root_squash"
+          - "insecure"
