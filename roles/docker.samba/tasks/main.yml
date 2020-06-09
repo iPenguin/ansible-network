@@ -1,0 +1,22 @@
+---
+
+- name: Include Docker skeleton file
+  include: "../docker_skel/tasks.yml"
+
+- name: Create exports file
+  template:
+    src: exports.j2
+    dest: "{{ docker_root }}/{{ docker_name }}/config/exports"
+    owner: "{{ ansible_user }}"
+    group: "users"
+    mode: 0640
+  notify: Run container
+
+- name: Create exports directories
+  file:
+    path: "{{ item.host_path }}"
+    owner: "{{ ansible_user }}"
+    group: "users"
+    mode: 0750
+    state: "{{ item.type }}"
+  loop: "{{ docker_volumes }}"
