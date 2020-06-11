@@ -1,0 +1,4 @@
+---
+
+- name: Include Docker skeleton file
+  include: "../docker_skel/tasks.yml"

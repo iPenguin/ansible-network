@@ -1,5 +1,7 @@
 ---
 
+docker_root: "/docker"
+
 local:
   network: "192.168.1.0/24"
   gateway: "192.168.1.1"

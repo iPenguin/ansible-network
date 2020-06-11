@@ -1,0 +1,11 @@
+---
+
+- name: server setup
+  hosts: ad_dc
+  become: yes
+  roles:
+    - role: docker.samba_ad
+      tags:
+        - docker
+        - samba
+        - server

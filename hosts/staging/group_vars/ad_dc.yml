@@ -1,15 +1,15 @@
 ---
 
-docker_ip:
+docker_ip: 192.168.1.56
 
 docker_options:
   - "--privileged"
-  - "-e "DOMAIN=n.milco.info"
-  - "-e "NETBIOS=MILCO"
-  - "-e "DOMAINPASS=tLYC24gJkNNqKtQ2oNLx"
-  - "-e "DNSFORWARDER=192.168.1.1"
-  - "-e "HOSTIP=192.168.1.10"
-  - "--dns-search n.milco.info"
+  - "-e 'DOMAIN={{ local.dns_domain }}'"
+  - "-e 'NETBIOS={{ local.netbios_domain }}'"
+  - "-e 'DOMAINPASS={{ ad_admin_password }}'"
+  - "-e 'DNSFORWARDER=192.168.1.1'"
+  - "-e 'HOSTIP=192.168.1.10'"
+  - "--dns-search {{ local.dns_domain }}"
   - "--dns 192.168.1.10"
   - "--dns 192.168.1.11"
   - "--add-host ad1.n.milco.info:192.168.1.10"

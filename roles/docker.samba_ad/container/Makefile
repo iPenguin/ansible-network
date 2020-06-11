@@ -1,4 +1,4 @@
-NAME := nfs
+NAME := samba_ad
 TAG := latest
 IMAGE_NAME := $(NAME)
 
@@ -13,4 +13,3 @@ build: ## Builds docker image latest
 clean: ## Remove built images
 	docker rmi $(IMAGE_NAME):latest || true
 	docker rmi $(IMAGE_NAME):$(TAG) || true
- 
