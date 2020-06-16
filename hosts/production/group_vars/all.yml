@@ -2,6 +2,32 @@
 
 docker_root: "/docker"
 
+hosts:
+  v4:
+    router.milco.info: 192.168.1.1
+    platform.milco.info: 192.168.1.5
+    printer.milco.info: 192.168.1.9
+    ad1.milco.info: 192.168.1.10
+    ad2.milco.info: 192.168.1.11
+    nfs.milco.info: 192.168.1.15
+    master.milco.info: 192.168.1.30
+    node01.milco.info: 192.168.1.31
+    node02.milco.info: 192.168.1.32
+    laptop.milco.info: 192.168.1.50
+    desktop.milco.info: 192.168.1.55
+  v6:
+    router.milco.info: 2601:200:4100:b689::1
+    platform.milco.info: 2601:200:4100:b689::5
+    printer.milco.info: 2601:200:4100:b689::9
+    ad1.milco.info: 2601:200:4100:b689::10
+    ad2.milco.info: 2601:200:4100:b689::11
+    nfs.milco.info: 2601:200:4100:b689::15
+    master.milco.info: 2601:200:4100:b689::dead:4ead
+    node01.milco.info: 2601:200:4100:b689::dead:0001
+    node02.milco.info: 2601:200:4100:b689::dead:0002
+    laptop.milco.info: 2601:200:4100:b689::dead:fade
+    desktop.milco.info: 2601:200:4100:b689::55
+
 local:
   network: "192.168.1.0/24"
   gateway: "192.168.1.1"
@@ -25,7 +51,6 @@ ad_admin_password: !vault |
   38373533373765306564326238383736613830313664636431326261626134626233363539646430
   3662393466333065380a376135633932306539356163363935666530643130353166633730383437
   3533
-
 
 sshd:
   Compression: true

@@ -3,7 +3,7 @@
 # {{ ansible_managed }}
 #
 
-CONTAINER=`docker ps -af "name={{ docker_name }}-srv" | awk 'NR>1 { print $1 }'`
+CONTAINER=`docker ps -af "name={{ inventory_hostname }}-srv" | awk 'NR>1 { print $1 }'`
 
 # If there this a container running stop and remove it first.
 if [ ! -z $CONTAINER ]
@@ -13,7 +13,7 @@ then
 fi
 
 docker run -d --restart always \
-	--name {{ docker_name }}-srv \
+	--name {{ inventory_hostname }}-srv \
 	{% for option in docker_options %}
     {{ option }} \
   {% endfor %}
@@ -23,4 +23,4 @@ docker run -d --restart always \
   {% for port in docker_ports %}
     -p {{ docker_ip }}:{{ port }} \
   {% endfor %}
-	{{ docker_name }}
+	{{ inventory_hostname }}

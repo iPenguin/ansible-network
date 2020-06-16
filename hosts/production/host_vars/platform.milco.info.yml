@@ -1,0 +1,13 @@
+---
+
+networking:
+  ip4:
+    - "{{ hosts.ip4['desktop.milco.info'] }}"
+    - "{{ hosts.ip4['ad1.milco.info'] }}"
+    - "{{ hosts.ip4['nfs.milco.info'] }}"
+    - "{{ hosts.ip4['app.milco.info'] }}"
+  ip6:
+    - "{{ hosts.ip6['desktop.milco.info'] }}"
+    - "{{ hosts.ip6['ad1.milco.info'] }}"
+    - "{{ hosts.ip6['nfs.milco.info'] }}"
+    - "{{ hosts.ip6['app.milco.info'] }}"

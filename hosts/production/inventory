@@ -1,14 +1,11 @@
 [vm_host]
-platform.n.milco.info ansible_host=192.168.1.5
+platform.milco.info ansible_host=192.168.1.5
 
 [ad_dc]
-ad1.n.milco.info ansible_host=192.168.1.10
-ad2.n.milco.info ansible_host=192.168.1.11
-
-[file_server]
-files.n.milco.info ansible_host=192.168.1.15
+ad1.milco.info ansible_host=192.168.1.10
+ad2.milco.info ansible_host=192.168.1.11
 
 [nfs_server]
-platform.n.milco.info ansible_host=192.168.1.5
+nfs.milco.info ansible_host=192.168.1.5
 
 [web_server]

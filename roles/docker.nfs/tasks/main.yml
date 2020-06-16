@@ -6,7 +6,7 @@
 - name: Create exports file
   template:
     src: exports.j2
-    dest: "{{ docker_root }}/{{ docker_name }}/config/exports"
+    dest: "{{ docker_root }}/{{ inventory_hostname }}/config/exports"
     owner: "{{ ansible_user }}"
     group: "users"
     mode: 0640

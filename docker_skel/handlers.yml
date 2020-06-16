@@ -1,11 +1,11 @@
 ---
 
 - name: Build container
-  make:
-    chdir: "{{ docker_root }}/{{ docker_name }}/container"
-    target: build
+  command: "docker build -t {{ inventory_hostname }} ."
+  args:
+    chdir: "{{ docker_root }}/{{ inventory_hostname }}/container"
   notify:
     - Run container
 
 - name: Run container
-  command: "{{ docker_root }}/{{ docker_name }}/run.sh"
+  command: "{{ docker_root }}/{{ inventory_hostname }}/run.sh"

@@ -2,6 +2,7 @@
 
 - name: Docker host setup
   hosts: vm_host
+  become: yes
   roles:
     - role: oefenweb.ssh_client
       tags:
@@ -11,7 +12,26 @@
       tags:
         - ssh
         - server
+    # - role: dresden-weekly.network-interfaces
+    #   tags:
+    #     - networking
+    #     - server
     - role: docker
       tags:
         - docker
         - server
+
+  tasks:
+    - name: Configure netplan for networking
+      template:
+        src: "01-docker.network.config.yaml"
+        dest: "/etc/netplan/01-docker.network.config.yaml"
+        owner: root
+        group: root
+        mode: 0644
+      when: ansible_os_family == "Debian"
+
+    - name: restart networking
+      service:
+        name: systemd-networkd
+        state: restarted
