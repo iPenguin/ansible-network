@@ -101,4 +101,6 @@ users:
     system: no
     create_home: yes
     home: /home/brian
-    key_file: "brian.pub"
+    key_file:
+      - "brian.laptop.pub"
+      - "brian.desktop.pub"

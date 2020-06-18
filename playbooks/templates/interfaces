@@ -1,0 +1,21 @@
+#
+# {{ ansible_managed }}
+#
+auto lo
+iface lo inet loopback
+
+source /etc/network/interfaces.d/*
+
+# The primary network interface
+auto {{ ansible_default_ipv4.interface }}
+iface {{ ansible_default_ipv4.interface }} inet dhcp
+
+{% for ip in networking.ip4 %}
+iface {{ ansible_default_ipv4.interface }} inet static
+  address {{ ip }}/24
+{% endfor %}
+
+{% for ip6 in networking.ip6 %}
+iface {{ ansible_default_ipv4.interface }} inet6 static
+  address {{ ip6 }}/64
+{% endfor %}

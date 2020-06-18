@@ -12,11 +12,8 @@
       tags:
         - ssh
         - server
-    # - role: dresden-weekly.network-interfaces
-    #   tags:
-    #     - networking
-    #     - server
-    - role: docker
+
+    - role: ericsysmin.docker
       tags:
         - docker
         - server
