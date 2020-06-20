@@ -1,6 +1,6 @@
 ---
 
-docker_ip: "{{ hosts.ip4['nfs.milco.info'] }}"
+docker_ip: "{{ hosts.nfs.ip4 }}"
 
 docker_options:
   - "--privileged"
@@ -18,7 +18,7 @@ docker_volumes:
     container_path: "/srv/shares"
     type: "directory"
 
-docker_images: "{{ inventory_hostname }}:latest"
+docker_image: "{{ inventory_hostname }}:latest"
 
 nfs_exports:
   - share: "/srv/shares"

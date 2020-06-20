@@ -2,6 +2,7 @@
 
 - name: nfs file server
   hosts: nfs_server
+  become: yes
   roles:
     - role: docker.nfs
       tags:
