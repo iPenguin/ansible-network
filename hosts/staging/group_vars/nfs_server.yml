@@ -18,6 +18,8 @@ docker_volumes:
     container_path: "/srv/shares"
     type: "directory"
 
+docker_image: "{{ inventory_hostname }}:latest"
+
 nfs_exports:
   - share: "/srv/shares"
     hosts:

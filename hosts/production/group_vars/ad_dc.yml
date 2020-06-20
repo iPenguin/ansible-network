@@ -1,6 +1,6 @@
 ---
 
-docker_ip: 192.168.1.10
+docker_ip: "{{ hosts.ip4[ (inventory_hostname) ] }}"
 
 docker_options:
   - "--privileged"
@@ -41,3 +41,5 @@ docker_volumes:
   - host_path: "/data/ad1/config/samba"
     container_path: "/etc/samba/external"
     type: "directory"
+
+docker_image: "{{ inventory_hostname }}:latest"

@@ -23,4 +23,4 @@ docker run -d --restart always \
   {% for port in docker_ports %}
     -p {{ docker_ip }}:{{ port }} \
   {% endfor %}
-	{{ inventory_hostname }}
+	{{ docker_image }}
