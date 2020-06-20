@@ -1,0 +1,38 @@
+---
+
+- name: debug stuff
+  debug:
+    msg: "{{ networking }}"
+
+- name: Install docker
+  apk:
+    name:
+      - docker
+    state: latest
+    update_cache: yes
+
+- name: Start docker service
+  service:
+    name: docker
+    state: restarted
+    enabled: yes
+
+- name: Add ansible user to docker group
+  user:
+    name: "{{ ansible_user }}"
+    groups: 'docker'
+    append: yes
+
+- name: Configure interfaces for networking
+  template:
+    src: "interfaces.j2"
+    dest: "/etc/network/interfaces"
+    owner: root
+    group: root
+    mode: 0644
+  when: ansible_os_family == "Alpine"
+
+- name: restart networking
+  service:
+    name: networking
+    state: restarted
