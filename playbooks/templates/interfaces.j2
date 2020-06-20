@@ -18,7 +18,8 @@ iface {{ ansible_default_ipv4.interface }} inet static
     {% for ip6 in value %}
 
 iface {{ ansible_default_ipv6.interface }} inet6 static
-  address {{ ip6 }}/64
+  address {{ ip6 }}
+  netmask 64
     {% endfor %}
   {% endif %}
 {% endfor %}
