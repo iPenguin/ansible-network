@@ -2,8 +2,8 @@
 platform.milco.info ansible_host=192.168.1.5
 
 [ad_dc]
-ad1.milco.info ansible_host=192.168.1.10
-ad2.milco.info ansible_host=192.168.1.11
+ad1.milco.info ansible_host=192.168.1.5
+ad2.milco.info ansible_host=192.168.1.55
 
 [nfs_server]
 nfs.milco.info ansible_host=192.168.1.5

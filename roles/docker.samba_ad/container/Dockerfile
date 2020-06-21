@@ -1,4 +1,5 @@
 FROM ubuntu:xenial
+
 MAINTAINER Fmstrat <fmstrat@NOSPAM.NO>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -15,4 +16,3 @@ RUN apt-get install -y openvpn inetutils-ping
 ADD init.sh /init.sh
 RUN chmod 755 /init.sh
 CMD /init.sh setup
- 

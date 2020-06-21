@@ -1,6 +1,6 @@
 ---
 
-docker_ip: "{{ hosts.ip4[ (inventory_hostname) ] }}"
+docker_ip: "{{ hosts[ (inventory_hostname_short) ].ip4 }}"
 
 docker_options:
   - "--privileged"
@@ -10,9 +10,10 @@ docker_options:
   - "-e 'DNSFORWARDER=192.168.1.1'"
   - "-e 'HOSTIP=192.168.1.10'"
   - "--dns-search {{ local.dns_domain }}"
-  - "--dns 192.168.1.10"
-  - "--dns 192.168.1.11"
+  - "--dns {{ hosts.ad1.ip4 }}"
+  - "--dns {{ hosts.ad2.ip4 }}"
   - "--add-host ad1.n.milco.info:192.168.1.10"
+  - "--add-host ad2.n.milco.info:192.168.1.11"
 
 docker_ports:
   - "53:53"
@@ -35,10 +36,10 @@ docker_volumes:
   - host_path: "/etc/localtime"
     container_path: "/etc/localtime:ro"
     type: "file"
-  - host_path: "/data/ad1/data/"
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/data/"
     container_path: "/var/lib/samba"
     type: "directory"
-  - host_path: "/data/ad1/config/samba"
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/config/samba"
     container_path: "/etc/samba/external"
     type: "directory"
 
