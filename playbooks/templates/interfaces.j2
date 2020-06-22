@@ -5,6 +5,7 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
+auto {{ ansible_default_ipv4.interface }}
 {% for key, value in networking.items() %}
   {% if key == "ip4" %}
     {% for ip4 in value %}
