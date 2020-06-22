@@ -1,0 +1,11 @@
+---
+
+- name: git repo server
+  hosts: git
+  become: yes
+  roles:
+    - role: docker.git
+      tags:
+        - docker
+        - git
+        - server
