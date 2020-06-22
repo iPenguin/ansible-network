@@ -1,0 +1,16 @@
+---
+
+docker_ip: "{{ hosts.git.ip4 }}"
+
+docker_ports:
+  - "2049:2049"
+  - "111:111"
+  - "20048:20048"
+
+docker_volumes:
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/data"
+    container_path: "/git"
+    type: "file"
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/authorized_keys"
+    container_path: "/home/git/.ssh/authorized_keys:ro"
+    type: "directory"
