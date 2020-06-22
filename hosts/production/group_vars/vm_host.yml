@@ -5,9 +5,9 @@ networking:
     - "{{ hosts.platform.ip4 }}"
     - "{{ hosts.ad1.ip4 }}"
     - "{{ hosts.nfs.ip4 }}"
-    - "{{ hosts.app.ip4 }}"
+    - "{{ hosts.git.ip4 }}"
   ip6:
     - "{{ hosts.platform.ip6 }}"
     - "{{ hosts.ad1.ip6 }}"
     - "{{ hosts.nfs.ip6 }}"
-    - "{{ hosts.app.ip6 }}"
+    - "{{ hosts.git.ip6 }}"
