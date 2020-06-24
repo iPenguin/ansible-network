@@ -1,7 +1,7 @@
 ---
 
 - name: server setup
-  hosts: ad_dc
+  hosts: samba_dc
   become: yes
   roles:
     - role: docker.samba_ad

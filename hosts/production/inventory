@@ -1,11 +1,11 @@
 [docker_host]
 platform.milco.info ansible_host=192.168.1.5
 
-[ad_dc]
+[samba_dc]
 ad1.milco.info ansible_host=192.168.1.5
 ad2.milco.info ansible_host=192.168.1.55
 
-[nfs_server]
+[nfs]
 nfs.milco.info ansible_host=192.168.1.5
 
 [git]

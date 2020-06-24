@@ -1,7 +1,7 @@
 ---
 
 - name: nfs file server
-  hosts: nfs_server
+  hosts: nfs
   become: yes
   roles:
     - role: docker.nfs
