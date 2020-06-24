@@ -1,0 +1,15 @@
+---
+
+- name: Build container task
+  command: "docker build -t {{ inventory_hostname }} ."
+  args:
+    chdir: "{{ docker_root }}/{{ inventory_hostname }}/container"
+  tags:
+    - never
+    - build
+
+- name: Run container task
+  command: "{{ docker_root }}/{{ inventory_hostname }}/run.sh"
+  tags:
+    - never
+    - build

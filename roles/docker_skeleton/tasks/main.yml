@@ -31,3 +31,9 @@
     group: "users"
     mode: 0750
   notify: Run container
+
+- name: Include build tasks
+  include_tasks: "build.yml"
+  tags:
+    - never
+    - build
