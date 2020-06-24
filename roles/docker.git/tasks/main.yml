@@ -1,15 +1,8 @@
 ---
 
-- name: Include Docker skeleton file
-  include: "../docker_skel/tasks.yml"
-
-- name: Create git path
-  file:
-    path: "{{ docker_root }}/{{ inventory_hostname }}/git"
-    owner: 1000
-    group: 100
-    mode: 0755
-    state: directory
+- name: Include Docker skeleton role
+  include_role:
+    name: docker_skeleton
 
 - name: Create keys
   assemble:

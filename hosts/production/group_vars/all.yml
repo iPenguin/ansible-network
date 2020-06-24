@@ -74,8 +74,8 @@ sshd:
     - "::"
   PermitRootLogin: no
   PubkeyAuthentication: yes
-  AuthenticationMethods: publickey #gssapi-keyex gssapi-with-mic
-  PasswordAuthentication: no
+  #AuthenticationMethods: publickey gssapi-keyex gssapi-with-mic
+  PasswordAuthentication: yes
   KerberosAuthentication: yes
   KerberosOrLocalPasswd: yes
   KerberosTicketCleanup: yes

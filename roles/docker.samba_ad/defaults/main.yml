@@ -1,5 +1,0 @@
----
-
-docker_options: []
-
-docker_image: "{{ inventory_hostname }}:latest"

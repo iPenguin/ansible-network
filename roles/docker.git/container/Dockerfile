@@ -2,7 +2,7 @@
 #
 FROM alpine:3.11
 
-LABEL maintainer "Brian Milco <brian@milco.info>"
+MAINTAINER "Brian Milco <brian@milco.info>"
 
 COPY LICENSE README.md /
 

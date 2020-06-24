@@ -4,13 +4,15 @@
 auto lo
 iface lo inet loopback
 
+{% set interface = {{ ansible_default_ipv4.interface | default("eth0") }} %}
+
 # The primary network interface
-auto {{ ansible_default_ipv4.interface }}
+auto {{ interface }}
 {% for key, value in networking.items() %}
   {% if key == "ip4" %}
     {% for ip4 in value %}
 
-iface {{ ansible_default_ipv4.interface }} inet static
+iface {{ interface }} inet static
   address {{ ip4 }}
   netmask 255.255.255.0
     {% endfor %}
@@ -18,7 +20,7 @@ iface {{ ansible_default_ipv4.interface }} inet static
   {% elif key == "ip6" %}
     {% for ip6 in value %}
 
-iface {{ ansible_default_ipv6.interface }} inet6 static
+iface {{ interface }} inet6 static
   address {{ ip6 }}
   netmask 64
     {% endfor %}

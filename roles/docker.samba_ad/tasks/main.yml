@@ -1,4 +1,5 @@
 ---
 
-- name: Include Docker skeleton file
-  include: "../docker_skel/tasks.yml"
+- name: Include Docker skeleton role
+  include_role:
+    name: docker_skeleton

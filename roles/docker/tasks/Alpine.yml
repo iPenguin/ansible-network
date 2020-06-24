@@ -1,9 +1,5 @@
 ---
 
-- name: debug stuff
-  debug:
-    msg: "{{ networking }}"
-
 - name: Install docker
   apk:
     name:

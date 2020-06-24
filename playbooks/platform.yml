@@ -1,7 +1,7 @@
 ---
 
 - name: Docker host setup
-  hosts: vm_host
+  hosts: docker_host
   become: yes
   roles:
     - role: oefenweb.ssh_client
@@ -17,3 +17,11 @@
       tags:
         - docker
         - server
+  tasks:
+    - name: Install additional ssh packages
+      apk:
+        name:
+          - openssh-server-pam
+          - openssh-sftp-server
+          - python3
+      when: ansible_os_family == "Alpine"

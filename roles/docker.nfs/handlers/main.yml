@@ -1,4 +1,0 @@
----
-
-- name: Include Docker skeleton handlers
-  include: ../docker_skel/handlers.yml
