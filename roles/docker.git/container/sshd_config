@@ -1,0 +1,49 @@
+#
+# {{ ansible_managed }}
+#
+Port 22
+ListenAddress 0.0.0.0
+ListenAddress ::
+Protocol 2
+HostKey /etc/ssh/keys/ssh_host_rsa_key
+HostKey /etc/ssh/keys/ssh_host_dsa_key
+HostKey /etc/ssh/keys/ssh_host_ecdsa_key
+HostKey /etc/ssh/keys/ssh_host_ed25519_key
+AcceptEnv LANG LC_*
+AuthorizedKeysFile /etc/authorized_keys/%u
+AuthenticationMethods publickey
+#AuthenticationMethods publickey gssapi-keyex gssapi-with-mic
+ChallengeResponseAuthentication no
+Compression yes
+#GSSAPIAuthentication yes
+#GSSAPICleanupCredentials yes
+#GSSAPIKeyExchange yes
+HostbasedAuthentication no
+IgnoreRhosts yes
+#KerberosAuthentication yes
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KeyRegenerationInterval 3600
+LogLevel INFO
+LoginGraceTime 2m
+PasswordAuthentication yes
+PermitEmptyPasswords no
+PermitRootLogin no
+#PrintLastLog yes
+PrintMotd no
+PubkeyAuthentication yes
+RSAAuthentication yes
+#RhostsRSAAuthentication no
+#ServerKeyBits 768
+StrictModes yes
+Subsystem sftp /usr/lib/ssh/sftp-server
+SyslogFacility AUTH
+TCPKeepAlive yes
+UsePAM yes
+#UsePrivilegeSeparation yes
+X11DisplayOffset 10
+X11Forwarding no
+
+KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com

@@ -7,20 +7,19 @@ MAINTAINER "Brian Milco <brian@milco.info>"
 COPY LICENSE README.md /
 
 RUN apk update && \
-    apk add bash git openssh rsync augeas shadow rssh && \
+    apk add bash git openssh openssh-server-pam rsync augeas shadow rssh && \
     deluser $(getent passwd 33 | cut -d: -f1) && \
     delgroup $(getent group 33 | cut -d: -f1) 2>/dev/null || true && \
-    mkdir -p ~root/.ssh /etc/authorized_keys && chmod 700 ~root/.ssh/ && \
-    augtool 'set /files/etc/ssh/sshd_config/AuthorizedKeysFile ".ssh/authorized_keys /etc/authorized_keys/%u"' && \
-    echo -e "Port 22\n" >> /etc/ssh/sshd_config && \
-    cp -a /etc/ssh /etc/ssh.cache && \
+    mkdir -p /etc/authorized_keys
+
+COPY sshd_config /etc/ssh/sshd_config
+
+RUN cp -a /etc/ssh /etc/ssh.cache && \
     rm -rf /var/cache/apk/*
 
-RUN mkdir -p /home/git/.ssh/ && \
-    mkdir -p /git && \
-    useradd -g users -s /usr/bin/git-shell git && \
-    echo "git:$1$Uxm6V02m$znEIIqtD4GNgBLPF08rx.." > chpasswd -e && \
-    chown -R git:users /home/git /git
+RUN useradd -g users -s /usr/bin/git-shell -md /git git && \
+    echo "git:ywTti9mXVMarBcnEiCjCBLFjhb7LaoWyavvljcY0" | chpasswd && \
+    chown -R git:users /git
 
 EXPOSE 22
 

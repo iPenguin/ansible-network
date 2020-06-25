@@ -13,4 +13,4 @@
     remote_src: no
     owner: 1000
     group: 100
-    mode: 0640
+    mode: 0644

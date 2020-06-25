@@ -5,9 +5,28 @@ networking:
     - "{{ hosts.platform.ip4 }}"
     - "{{ hosts.ad1.ip4 }}"
     - "{{ hosts.nfs.ip4 }}"
-    - "{{ hosts.app.ip4 }}"
+    - "{{ hosts.git.ip4 }}"
   ip6:
     - "{{ hosts.platform.ip6 }}"
     - "{{ hosts.ad1.ip6 }}"
     - "{{ hosts.nfs.ip6 }}"
-    - "{{ hosts.app.ip6 }}"
+    - "{{ hosts.git.ip6 }}"
+
+sshd:
+  Compression: true
+  ListenAddress:
+    - "{{ hosts.platform.ip4 }}"
+    - "{{ hosts.platform.ip6 }}"
+  PermitRootLogin: no
+  PubkeyAuthentication: yes
+  AuthenticationMethods: publickey
+  # AuthenticationMethods: publickey gssapi-keyex gssapi-with-mic
+  # PasswordAuthentication: no
+  # KerberosAuthentication: yes
+  # KerberosOrLocalPasswd: yes
+  # KerberosTicketCleanup: yes
+  # GSSAPIAuthentication: yes
+  # GSSAPICleanupCredentials: yes
+  # GSSAPIKeyExchange: yes
+  # UsePAM: yes
+  # X11Forwarding: yes

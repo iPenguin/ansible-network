@@ -2,13 +2,19 @@
 
 docker_ip: "{{ hosts.git.ip4 }}"
 
+docker_options:
+  - "-e SSH_USERS=git:1000"
+
 docker_ports:
   - "22:22"
 
 docker_volumes:
   - host_path: "{{ docker_root }}/{{ inventory_hostname }}/data"
     container_path: "/git"
-    type: "file"
-  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/authorized_keys"
-    container_path: "/home/git/.ssh/authorized_keys:ro"
     type: "directory"
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/config"
+    container_path: "/etc/ssh/keys"
+    type: "directory"
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/authorized_keys"
+    container_path: "/etc/authorized_keys/git:ro"
+    type: "file"
