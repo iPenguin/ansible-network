@@ -18,10 +18,34 @@
         - docker
         - server
   tasks:
+    - name: Make ssh directory
+      file:
+        path: "/home/ansible/.ssh/"
+        owner: "{{ ansible_user }}"
+        group: users
+        mode: 0700
+        state: directory
+      tags:
+        - ssh
+        - keys
+
+    - name: Install ssh keys for ansible user
+      assemble:
+        src: "files/keys/"
+        dest: "/home/ansible/.ssh/authorized_keys"
+        remote_src: no
+        owner: 1000
+        group: 100
+        mode: 0644
+      tags:
+        - ssh
+        - keys
+
     - name: Install additional ssh packages
       apk:
         name:
           - openssh-server-pam
           - openssh-sftp-server
           - python3
+          - iputils
       when: ansible_os_family == "Alpine"
