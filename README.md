@@ -1,6 +1,6 @@
 This repo contains a basic definition for a very simple network configuration.
 
-I use it to deploy my home network and to expermint with Ansible, Docker and other technologies.
+I use this repository to deploy my home network and to experiment with Ansible, Docker and other technologies.
 
 Directory Structure:
 
