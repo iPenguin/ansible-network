@@ -32,8 +32,13 @@
     mode: 0750
   notify: Run container
 
+- name: Test for a dockerfile
+  stat:
+    path: "{{ docker_root }}/{{ inventory_hostname }}/container/Dockerfile"
+    register: does_dockerfile
+
 - name: Include build tasks
-  include_tasks: "build.yml"
+  include_tasks: "handlers/main.yml"
   tags:
     - never
     - build
