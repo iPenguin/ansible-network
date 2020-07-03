@@ -1,7 +1,5 @@
 ---
 
-docker_ip: "{{ hosts.ip4[ (inventory_hostname) ] }}"
-
 docker_options:
   - "--privileged"
   - "-e 'DOMAIN={{ local.dns_domain }}'"

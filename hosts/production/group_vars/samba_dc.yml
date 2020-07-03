@@ -1,7 +1,5 @@
 ---
 
-docker_ip: "{{ hosts[ (inventory_hostname_short) ].ip4 }}"
-
 docker_options:
   - "--privileged"
   - "-e 'DOMAIN={{ local.dns_domain }}'"
@@ -42,5 +40,3 @@ docker_volumes:
   - host_path: "{{ docker_root }}/{{ inventory_hostname }}/config/samba"
     container_path: "/etc/samba/external"
     type: "directory"
-
-docker_image: "{{ inventory_hostname }}:latest"

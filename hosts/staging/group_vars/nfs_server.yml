@@ -1,7 +1,5 @@
 ---
 
-docker_ip: "{{ hosts.nfs.ip4 }}"
-
 docker_options:
   - "--privileged"
 

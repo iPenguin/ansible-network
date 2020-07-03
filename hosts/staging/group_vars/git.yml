@@ -1,7 +1,5 @@
 ---
 
-docker_ip: "{{ hosts.git.ip4 }}"
-
 docker_options:
   - "-e SSH_USERS=git:1000"
 
