@@ -7,6 +7,12 @@
   when: does_dockerfile.stat.exists == true
   notify:
     - Run container
+  tags:
+    - never
+    - build
 
 - name: Run container
   command: "{{ docker_root }}/{{ inventory_hostname }}/run.sh"
+  tags:
+    - never
+    - build

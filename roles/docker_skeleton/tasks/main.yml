@@ -35,7 +35,9 @@
 - name: Test for a dockerfile
   stat:
     path: "{{ docker_root }}/{{ inventory_hostname }}/container/Dockerfile"
-    register: does_dockerfile
+  register: does_dockerfile
+  tags:
+    - always
 
 - name: Include build tasks
   include_tasks: "handlers/main.yml"

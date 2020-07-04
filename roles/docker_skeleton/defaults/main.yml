@@ -1,7 +1,7 @@
 ---
 
 docker_ip: "{{ hosts.ip4[ (inventory_hostname) ] }}"
-
-docker_options: []
-
 docker_image: "{{ inventory_hostname }}:latest"
+docker_options: []
+docker_volumes: []
+docker_ports: []
