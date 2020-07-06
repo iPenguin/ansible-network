@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+if [ -z "/root/.config/SpiderOakONE/.setup" ]
+then
+  /usr/bin/SpiderOakONE --setup=/root/.config/SpiderOakONE/setup.json
+
+  {% for path in backup_paths %}
+/usr/bin/SpiderOakONE --include-dir={{ path }}
+  {% endfor %}
+
+  touch /root/.config/SpiderOakONE/.setup
+fi
+
+/usr/bin/SpiderOakONE --headless

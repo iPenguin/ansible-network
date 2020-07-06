@@ -1,0 +1,20 @@
+---
+
+- name: Include Docker skeleton role
+  include_role:
+    name: docker_skeleton
+  tags:
+    - build
+
+- name: Include encrypted variables
+  include_vars: "vault.backups.yml"
+
+- name: generate setup.json
+  template:
+    src: setup.json.j2
+    dest: "{{ docker_root }}/{{ inventory_hostname }}/container/setup.json"
+
+- name: generate init script
+  template:
+    src: init.sh.j2
+    dest: "{{ docker_root }}/{{ inventory_hostname }}/container/init.sh"

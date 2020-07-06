@@ -1,0 +1,10 @@
+---
+
+- name: spider oak docker
+  hosts: backups
+  become: yes
+  roles:
+    - role: docker.spideroak
+      tags:
+        - docker
+        - backups

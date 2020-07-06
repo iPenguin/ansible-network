@@ -1,0 +1,21 @@
+---
+
+docker_volumes:
+  - host_path: "{{ docker_root }}"
+    container_path: "/docker"
+    type: "directory"
+  - host_path: "/srv/shares/files"
+    container_path: "/data"
+    type: "directory"
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/config"
+    container_path: "/root/.config/SpiderOakONE"
+    type: "directory"
+
+backup_username: "{{ vault_backup_username }}"
+backup_password: "{{ vault_backup_password }}"
+backup_reinstall: "true"
+backup_device: "Server"
+
+backup_paths:
+  - "/docker"
+  - "/data"
