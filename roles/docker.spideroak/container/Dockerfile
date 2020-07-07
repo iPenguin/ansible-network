@@ -15,4 +15,5 @@ RUN chmod +x /usr/local/bin/init
 
 VOLUME [ "/docker", "/data" ]
 
-ENTRYPOINT [ "/usr/bin/SpiderOakONE", "--headless" ]
+ENTRYPOINT [ "/usr/local/bin/init" ]
+CMD [ "/usr/bin/SpiderOakONE", "--headless" ]
