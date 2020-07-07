@@ -17,5 +17,8 @@ backup_reinstall: "true"
 backup_device: "Server"
 
 backup_paths:
-  - "/docker"
+  - "{{ docker_root }}"
   - "/data"
+
+backup_exclude_paths:
+  - "{{ docker_root }}/{{ inventory_hostname }}/config"

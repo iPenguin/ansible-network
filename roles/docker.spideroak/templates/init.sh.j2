@@ -10,6 +10,10 @@ then
 /usr/bin/SpiderOakONE --include-dir={{ path }}
   {% endfor %}
 
+  {% for exclude_path in backup_exclude_paths %}
+/usr/bin/SpiderOakONE --exclude-dir={{ exclude_path }}
+  {% endfor %}
+
   touch /root/.config/SpiderOakONE/.setup
 fi
 
