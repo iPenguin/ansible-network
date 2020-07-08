@@ -14,6 +14,7 @@ fi
 
 docker run -d --restart always \
 	--name {{ inventory_hostname }}-srv \
+  -h {{ inventory_hostname }} \
 	{% for option in docker_options %}
     {{ option }} \
   {% endfor %}
