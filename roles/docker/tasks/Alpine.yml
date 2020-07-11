@@ -1,9 +1,18 @@
 ---
 
-- name: Install docker
+- name: Add community repo to package management
+  copy:
+    src: files/apk.repo
+    dest: /etc/apk/repositories
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install docker and vim
   apk:
     name:
       - docker
+      - vim
     state: latest
     update_cache: yes
 
@@ -26,7 +35,6 @@
     owner: root
     group: root
     mode: 0644
-  when: ansible_os_family == "Alpine"
 
 - name: restart networking
   service:
