@@ -1,11 +1,5 @@
 ---
 
-- name: Include Docker skeleton role
-  include_role:
-    name: "docker_skeleton"
-  tags:
-    - build
-
 - name: Create exports file
   template:
     src: exports.j2
