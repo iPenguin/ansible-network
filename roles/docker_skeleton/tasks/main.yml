@@ -39,6 +39,12 @@
   tags:
     - always
 
+- name: Always pull latest version of remote dockers
+  command: "docker pull {{ docker_image }}"
+  when: does_dockerfile.stat.exists == false
+  tags:
+    - always
+
 - name: Include build tasks
   include_tasks: "handlers/main.yml"
   tags:
