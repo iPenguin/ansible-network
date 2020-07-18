@@ -1,0 +1,10 @@
+---
+
+- name: Create jenkins home directorie
+  file:
+    path: "{{ docker_root }}/{{ inventory_hostname }}/config"
+    owner: "{{ ansible_user }}"
+    group: "users"
+    mode: 0750
+    state: "directory"
+  notify: Build container

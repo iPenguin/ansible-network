@@ -14,4 +14,5 @@ git.milco.info ansible_host=192.168.1.5
 [backups]
 backups.milco.info ansible_host=192.168.1.5
 
-[web_server]
+[jenkins]
+jenkins.milco.info ansible_host=192.168.1.5

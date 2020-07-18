@@ -42,6 +42,9 @@ hosts:
   desktop:
     ip4: "{{ c_network }}.55"
     ip6: "{{ ip6_network }}::55"
+  jenkins:
+    ip4: "{{ c_network }}.21"
+    ip6: "{{ ip6_network }}::21"
 
 local:
   network: "192.168.1.0/24"

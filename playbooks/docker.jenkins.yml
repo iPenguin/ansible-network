@@ -1,0 +1,11 @@
+---
+
+- name: Jenkins CI/CD server
+  hosts: jenkins
+  become: yes
+  roles:
+    - role: docker.jenkins
+      tags:
+        - docker
+        - jenkins
+        - server
