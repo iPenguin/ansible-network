@@ -1,6 +1,6 @@
 const http = require('http');
 
-const hostname = '127.0.0.1';
+const hostname = 'nodejs.milco.info';
 const port = 80;
 
 const server = http.createServer((req, res) => {

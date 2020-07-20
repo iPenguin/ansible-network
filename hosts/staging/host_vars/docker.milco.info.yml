@@ -7,9 +7,11 @@ networking:
     - "{{ hosts['nfs'].ip4 }}"
     - "{{ hosts['git'].ip4 }}"
     - "{{ hosts['jenkins'].ip4 }}"
+    - "{{ hosts['nodejs'].ip4 }}"
   ip6:
     - "{{ hosts['platform'].ip6 }}"
     - "{{ hosts['ad1'].ip6 }}"
     - "{{ hosts['nfs'].ip6 }}"
     - "{{ hosts['git'].ip6 }}"
     - "{{ hosts['jenkins'].ip6 }}"
+    - "{{ hosts['nodejs'].ip6 }}"
