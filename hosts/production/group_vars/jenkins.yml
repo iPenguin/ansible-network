@@ -1,0 +1,15 @@
+---
+
+docker_image: "jenkins/jenkins:lts-alpine"
+
+docker_options:
+  - "-e SSH_USERS=git:1000"
+
+docker_ports:
+  - "80:8080"
+  - "50000:50000"
+
+docker_volumes:
+  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/data"
+    container_path: "/var/jenkins_home"
+    type: "directory"
