@@ -1,6 +1,6 @@
 ---
 
-- name: Create jenkins home directorie
+- name: Create jenkins config directory
   file:
     path: "{{ docker_root }}/{{ inventory_hostname }}/config"
     owner: "{{ ansible_user }}"
