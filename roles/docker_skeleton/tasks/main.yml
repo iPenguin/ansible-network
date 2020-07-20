@@ -12,15 +12,23 @@
     - "{{ docker_root }}/{{ inventory_hostname }}/config"
     - "{{ docker_root }}/{{ inventory_hostname }}/data"
 
-- name: Deploy container
+- name: Create directory structure for container
+  file:
+    path: "{{ docker_root }}/{{ inventory_hostname }}/container/{{ item.path }}"
+    state: "directory"
+    mode: "{{ item.mode }}"
+  with_filetree: "{{ docker_role_path }}/container"
+  when: item.state == "directory"
+
+- name: Deploy files into container
   copy:
-    src: "{{ item }}"
-    dest: "{{ docker_root }}/{{ inventory_hostname }}/container/"
+    src: "{{ item.src }}"
+    dest: "{{ docker_root }}/{{ inventory_hostname }}/container/{{ item.path }}"
     owner: "{{ ansible_user }}"
     group: "users"
-    mode: 0640
-  with_fileglob:
-    - "container/*"
+    mode: "{{ item.mode }}"
+  with_filetree: "{{ docker_role_path }}/container"
+  when: item.state != "directory"
   notify: Build container
 
 - name: Copy in run script
