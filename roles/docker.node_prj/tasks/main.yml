@@ -1,0 +1,11 @@
+---
+
+- name: Set facts - define docker_role_path
+  set_fact:
+    d_role_path: "{{ role_path }}"
+
+- name: include skeleton role
+  include_role:
+    name: docker_skeleton
+  vars:
+    docker_role_path: "{{ d_role_path }}"

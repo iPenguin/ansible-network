@@ -45,6 +45,9 @@ hosts:
   jenkins:
     ip4: "{{ c_network }}.21"
     ip6: "{{ ip6_network }}::21"
+  nodejs:
+    ip4: "{{ c_network }}.22"
+    ip6: "{{ ip6_network }}::22"
 
 local:
   network: "192.168.1.0/24"

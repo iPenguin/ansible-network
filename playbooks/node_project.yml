@@ -1,0 +1,10 @@
+---
+
+- name: Node.js Project
+  hosts: node
+  become: yes
+  roles:
+    - role: docker.node_prj
+      tags:
+        - node
+        - projects
