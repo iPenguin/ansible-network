@@ -1,5 +1,9 @@
 ---
 
+- name: Include host variables
+  include_vars: "vars/{{ inventory_hostname }}.yml"
+  ignore_errors: yes
+
 - name: Create skeleton directory structure
   file:
     path: "{{ item }}"
