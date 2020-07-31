@@ -1,7 +1,5 @@
 ---
 
-docker_image: "jenkins/jenkins:lts-alpine"
-
 docker_options:
   - "-e SSH_USERS=git:1000"
 
@@ -13,3 +11,6 @@ docker_volumes:
   - host_path: "{{ docker_root }}/{{ inventory_hostname }}/data"
     container_path: "/var/jenkins_home"
     type: "directory"
+  - host_path: "/var/run/docker.sock"
+    container_path: "/var/run/docker.sock"
+    type: "file"
