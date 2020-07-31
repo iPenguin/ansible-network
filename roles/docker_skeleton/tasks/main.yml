@@ -14,7 +14,9 @@
   loop:
     - "{{ docker_root }}/{{ inventory_hostname }}/"
     - "{{ docker_root }}/{{ inventory_hostname }}/config"
+    - "{{ docker_root }}/{{ inventory_hostname }}/container"
     - "{{ docker_root }}/{{ inventory_hostname }}/data"
+  notify: Build container
 
 - name: Create directory structure for container
   file:
@@ -23,6 +25,7 @@
     mode: "{{ item.mode }}"
   with_filetree: "{{ docker_role_path }}/container"
   when: item.state == "directory"
+  notify: Build container
 
 - name: Deploy files into container
   copy:
@@ -42,7 +45,7 @@
     owner: "{{ ansible_user }}"
     group: "users"
     mode: 0750
-  notify: Run container
+  notify: Build container
 
 - name: Test for a dockerfile
   stat:

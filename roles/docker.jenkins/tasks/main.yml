@@ -1,10 +1,11 @@
 ---
 
-- name: Create jenkins config directory
-  file:
-    path: "{{ docker_root }}/{{ inventory_hostname }}/config"
-    owner: "{{ ansible_user }}"
-    group: "users"
-    mode: 0750
-    state: "directory"
-  notify: Build container
+- name: Set facts - define docker_role_path
+  set_fact:
+    d_role_path: "{{ role_path }}"
+
+- name: include skeleton role
+  include_role:
+    name: docker_skeleton
+  vars:
+    docker_role_path: "{{ d_role_path }}"
