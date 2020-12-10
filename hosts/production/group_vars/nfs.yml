@@ -15,9 +15,20 @@ docker_volumes:
   - host_path: "/srv/shares"
     container_path: "/srv/shares"
     type: "directory"
+  - host_path: "/srv/archives"
+    container_path: "/srv/archives"
+    type: "directory"
 
 nfs_exports:
   - share: "/srv/shares"
+    hosts:
+      - name: "*"
+        options:
+          - "rw"
+          - "sync"
+          - "no_root_squash"
+          - "insecure"
+  - share: "/srv/archives"
     hosts:
       - name: "*"
         options:
