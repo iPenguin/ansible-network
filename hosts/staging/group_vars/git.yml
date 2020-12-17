@@ -7,7 +7,7 @@ docker_ports:
   - "22:22"
 
 docker_volumes:
-  - host_path: "{{ docker_root }}/{{ inventory_hostname }}/data"
+  - host_path: "/srv/git"
     container_path: "/git"
     type: "directory"
   - host_path: "{{ docker_root }}/{{ inventory_hostname }}/config"
