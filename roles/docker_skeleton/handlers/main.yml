@@ -1,5 +1,10 @@
 ---
 
+- name: Restart Networking
+  service:
+    name: NetworkManager
+    state: restarted
+
 - name: Build container
   command: "docker build -t {{ inventory_hostname }} ."
   args:
