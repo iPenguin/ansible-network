@@ -2,56 +2,57 @@
 
 docker_root: "/docker"
 
-c_network: "192.168.1"
+ip4_network: "192.168.1"
 ip6_network: "2601:200:4100:b689"
 
 hosts:
   router:
-    ip4: "{{ c_network }}.1"
+    ip4: "{{ ip4_network }}.1"
     ip6: "{{ ip6_network }}::1"
   platform:
-    ip4: "{{ c_network }}.5"
+    ip4: "{{ ip4_network }}.5"
     ip6: "{{ ip6_network }}::5"
   printer:
-    ip4: "{{ c_network }}.9"
+    ip4: "{{ ip4_network }}.9"
     ip6: "{{ ip6_network }}::9"
   git:
-    ip4: "{{ c_network }}.20"
+    ip4: "{{ ip4_network }}.20"
     ip6: "{{ ip6_network }}::20"
   ad1:
-    ip4: "{{ c_network }}.10"
+    ip4: "{{ ip4_network }}.10"
     ip6: "{{ ip6_network }}::10"
   ad2:
-    ip4: "{{ c_network }}.11"
+    ip4: "{{ ip4_network }}.11"
     ip6: "{{ ip6_network }}::11"
   nfs:
-    ip4: "{{ c_network }}.15"
+    ip4: "{{ ip4_network }}.15"
     ip6: "{{ ip6_network }}::15"
   master:
-    ip4: "{{ c_network }}.30"
+    ip4: "{{ ip4_network }}.30"
     ip6: "{{ ip6_network }}::dead:4ead"
   node01:
-    ip4: "{{ c_network }}.31"
+    ip4: "{{ ip4_network }}.31"
     ip6: "{{ ip6_network }}::dead:0001"
   node02:
-    ip4: "{{ c_network }}.32"
+    ip4: "{{ ip4_network }}.32"
     ip6: "{{ ip6_network }}::dead:0002"
   laptop:
-    ip4: "{{ c_network }}.50"
+    ip4: "{{ ip4_network }}.50"
     ip6: "{{ ip6_network }}::dead:fade"
   desktop:
-    ip4: "{{ c_network }}.55"
+    ip4: "{{ ip4_network }}.55"
     ip6: "{{ ip6_network }}::55"
   jenkins:
-    ip4: "{{ c_network }}.21"
+    ip4: "{{ ip4_network }}.21"
     ip6: "{{ ip6_network }}::21"
   nodejs:
-    ip4: "{{ c_network }}.22"
+    ip4: "{{ ip4_network }}.22"
     ip6: "{{ ip6_network }}::22"
 
 local:
   network: "192.168.1.0/24"
-  gateway: "192.168.1.1"
+  gateway: "{{ ip4_network}}.1"
+  gateway6: "{{ ip6_network }}::1"
   dns_domain: n.milco.info
   netbios_domain: MILCO
   ad_dc_hostname: ad.milco.info
