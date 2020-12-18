@@ -9,3 +9,10 @@
     name: docker_skeleton
   vars:
     docker_role_path: "{{ d_role_path }}"
+
+- name: Start podman
+  service:
+    name: podman.socket
+    state: started
+    enabled: yes
+  when: ansible_os_family == "RedHat"
