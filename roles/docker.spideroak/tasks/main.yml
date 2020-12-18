@@ -17,6 +17,7 @@
   template:
     src: setup.json.j2
     dest: "{{ docker_root }}/{{ inventory_hostname }}/container/setup.json"
+    mode: 0600
 
 - name: generate init script
   template:
