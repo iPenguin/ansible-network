@@ -7,10 +7,13 @@ docker_ports:
   - "80:8080"
   - "50000:50000"
 
+docker_socket_path: "{{ '/run/docker.sock' if ansible_os_family == 'RedHat' else '/var/run/docker.sock' }}"
+
+
 docker_volumes:
   - host_path: "{{ docker_root }}/{{ inventory_hostname }}/data"
     container_path: "/var/jenkins_home"
     type: "directory"
-  - host_path: "/var/run/docker.sock"
+  - host_path: "{{ docker_socket_path }}"
     container_path: "/var/run/docker.sock"
     type: "file"
