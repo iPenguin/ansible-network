@@ -7,11 +7,15 @@
 - name: Configure Networking - IPv4
   command: "nmcli c m {{ ansible_default_ipv4.interface }} ip4 {{ hosts[inventory_hostname_short].ip4 }}/24"
   notify: Restart Networking
-  when: ansible_os_family == "RedHat"
+  when:
+    - ansible_os_family == "RedHat"
+    - hosts[inventory_hostname_short] is defined
 - name: Configure Networking - IPv6
   command: "nmcli c m {{ ansible_default_ipv6.interface }} ip6 {{ hosts[inventory_hostname_short].ip6 }}/64"
   notify: Restart Networking
-  when: ansible_os_family == "RedHat"
+  when:
+    - ansible_os_family == "RedHat"
+    - hosts[inventory_hostname_short] is defined
 
 - name: Create skeleton directory structure
   file:
