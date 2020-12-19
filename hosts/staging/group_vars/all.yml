@@ -15,9 +15,6 @@ hosts:
   printer:
     ip4: "{{ ip4_network }}.9"
     ip6: "{{ ip6_network }}::9"
-  git:
-    ip4: "{{ ip4_network }}.20"
-    ip6: "{{ ip6_network }}::20"
   ad1:
     ip4: "{{ ip4_network }}.10"
     ip6: "{{ ip6_network }}::10"
@@ -27,6 +24,18 @@ hosts:
   nfs:
     ip4: "{{ ip4_network }}.15"
     ip6: "{{ ip6_network }}::15"
+  git:
+    ip4: "{{ ip4_network }}.20"
+    ip6: "{{ ip6_network }}::20"
+  jenkins:
+    ip4: "{{ ip4_network }}.21"
+    ip6: "{{ ip6_network }}::21"
+  nodejs:
+    ip4: "{{ ip4_network }}.22"
+    ip6: "{{ ip6_network }}::22"
+  nginx:
+    ip4: "{{ ip4_network }}.23"
+    ip6: "{{ ip6_network }}::23"
   master:
     ip4: "{{ ip4_network }}.30"
     ip6: "{{ ip6_network }}::dead:4ead"
@@ -42,12 +51,6 @@ hosts:
   desktop:
     ip4: "{{ ip4_network }}.55"
     ip6: "{{ ip6_network }}::55"
-  jenkins:
-    ip4: "{{ ip4_network }}.21"
-    ip6: "{{ ip6_network }}::21"
-  nodejs:
-    ip4: "{{ ip4_network }}.22"
-    ip6: "{{ ip6_network }}::22"
 
 local:
   network: "192.168.1.0/24"
