@@ -7,6 +7,9 @@ ad1.milco.info ansible_host=192.168.122.5
 [nfs]
 nfs.milco.info ansible_host=192.168.122.5
 
+[nginx]
+nginx.milco.info ansible_host=192.168.122.5
+
 [git]
 git.milco.info ansible_host=192.168.122.5
 
