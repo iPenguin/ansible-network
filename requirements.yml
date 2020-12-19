@@ -1,10 +1,15 @@
+---
 #
 # Required roles for project
 # install with: ansible-galaxy install -r requirements.yml
 #
-- src: willshersystems.sshd
-- src: oefenweb.ssh_client
-- src: darrylweaver.samba
-- src: ahuffman.resolv
-- src: idiv-biodiversity.systemd_resolved
-- src: geerlingguy.nfs
+collections:
+    - name: containers.podman
+      source: https://galaxy.ansible.com
+
+roles:
+    - name: willshersystems.sshd
+    - name: oefenweb.ssh_client
+    - name: darrylweaver.samba
+    - name: ahuffman.resolv
+    - name: idiv-biodiversity.systemd_resolved
