@@ -1,0 +1,11 @@
+---
+
+- name: nginx server
+  hosts: nginx
+  become: yes
+  roles:
+    - role: docker.nginx
+      tags:
+        - docker
+        - nginx
+        - server
