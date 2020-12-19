@@ -49,3 +49,23 @@
           - python3
           - iputils
       when: ansible_os_family == "Alpine"
+
+    - name: "Install RedHat specific items"
+      block:
+        - name: Install virtualization packages
+          ansible.builtin.dnf:
+            name: "@Virtualization Hypervisor"
+            state: present
+
+        - name: Start/enable libvirtd service
+          service:
+            name: libvirtd
+            state: started
+            enabled: true
+
+        - name: Enable ansible user for libvirt managment
+          ansible.builtin.user:
+            name: ansible
+            append: yes
+            groups: libvirt
+      when: ansible_os_family == "RedHat"
