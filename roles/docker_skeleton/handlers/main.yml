@@ -1,8 +1,8 @@
 ---
 
 - name: Restart Networking
-  shell: "nmcli c down {{ ansible_default_ipv4.interface }}; \
-            nmcli c up {{ ansible_default_ipv4.interface }}"
+  shell: "nmcli c down {{ ansible_facts['default_ipv4']['interface'] }}; \
+            nmcli c up {{ ansible_facts['default_ipv4']['interface'] }}"
 
 - name: Build container
   command: "docker build -t {{ inventory_hostname }} ."

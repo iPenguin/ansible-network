@@ -4,7 +4,7 @@
 auto lo
 iface lo inet loopback
 
-{% set interface = {{ ansible_default_ipv4.interface | default("eth0") }} %}
+{% set interface = {{ ansible_facts['default_ipv4']['interface'] | default("eth0") }} %}
 
 # The primary network interface
 auto {{ interface }}

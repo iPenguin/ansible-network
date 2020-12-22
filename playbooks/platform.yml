@@ -48,7 +48,7 @@
           - openssh-sftp-server
           - python3
           - iputils
-      when: ansible_os_family == "Alpine"
+      when: ansible_facts['os_family'] == "Alpine"
 
     - name: "Install RedHat specific items"
       block:
@@ -68,4 +68,4 @@
             name: ansible
             append: yes
             groups: libvirt
-      when: ansible_os_family == "RedHat"
+      when: ansible_facts['os_family'] == "RedHat"

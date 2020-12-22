@@ -1,6 +1,6 @@
 ---
 
-- name: Install optional utils on CentOS 7
+- name: Install optional utils on ubuntu 20.04
   apt:
     name: [
       'vim',
