@@ -9,14 +9,36 @@
   vars:
     docker_role_path: "{{ d_role_path }}"
 
+- name: create directory structure - html
+  file:
+    path: "{{ web_base_dir }}/html"
+    state: directory
+    recurse: yes
+    owner: ansible
+    group: ansible
+    mode: '0755'
+- name: create directory structure - logs
+  file:
+    path: "{{ web_base_dir }}/logs"
+    state: directory
+    recurse: yes
+    owner: ansible
+    group: ansible
+    mode: '0755'
+
+- sefcontext:
+    target: "{{ web_base_dir }}(/.*)?"
+    setype: container_file_t
+    state: present
+
 - name: get nginx container
   containers.podman.podman_container:
-    name: basic-webserver
-    image: registry.access.redhat.com/ubi8/nginx-118
+    name: nginx.milco.info-srv
+    image: docker.io/library/nginx
     state: started
     recreate: yes
     ports:
-      - "80:8080"
+      - "{{ hosts.nginx.ip4 }}:8080:80"
     volume:
-      - "/srv/web/html:/usr/share/nginx/html"
-      - "/srv/web/logs:/var/log/nginx"
+      - "{{ web_base_dir }}/html:/usr/share/nginx/html:ro"
+      - "{{ web_base_dir }}/logs:/var/log/nginx"

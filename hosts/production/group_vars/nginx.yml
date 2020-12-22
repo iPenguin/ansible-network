@@ -1,1 +1,14 @@
 ---
+
+docker_options:
+  - "--privileged"
+  - "-e NGINX_HOST=nginx.milco.info"
+  - "-e NGINX_PORT=80"
+
+docker_ports:
+  - "8080:80"
+
+docker_volumes:
+  - host_path: "{{ web_base_dir }}/html"
+    container_path: "/usr/share/nginx/html:ro"
+    type: "directory"
