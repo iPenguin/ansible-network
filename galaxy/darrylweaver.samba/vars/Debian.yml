@@ -1,6 +1,0 @@
----
-
-smb_service: "smbd"
-nmb_service: "nmbd"
-winbind_service: "winbind"
-ad_dc_service: "samba-ad-dc"

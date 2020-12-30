@@ -1,7 +1,0 @@
----
-
-smb_service: "smb"
-nmb_service: "nmb"
-winbind_service: "winbind"
-# This service does not exist on redhat distros.
-ad_dc_service: "samba-ad-dc"
