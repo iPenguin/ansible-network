@@ -10,7 +10,8 @@
   vars:
     docker_role_path: "{{ d_role_path }}"
 
-- sefcontext:
+- name: Set SELinux context for base git dir
+  sefcontext:
     target: "{{ git_base_dir }}(/.*)?"
     setype: container_file_t
     state: present
